@@ -45,3 +45,29 @@ from languages l
 join country_languages cl on l.language_id = cl.country_id 
 join countries c on cl.country_id = c.country_id 
 where c.name = 'Albania' and cl.official = 1;
+
+-- 8. Selezionare il Gross domestic product (GDP) medio dello United Kingdom tra il 2000 e il 2010
+
+select avg(cs.gdp)
+from countries c 
+join country_stats cs on c.country_id = cs.country_id 
+where name = 'United Kingdom' and (cs.`year` >= 2000 and cs.`year`<= 2010);
+
+-- 9. Selezionare tutte le nazioni in cui si parla hindi, ordinate dalla più estesa alla meno estesa
+
+select c.name as nazioni, c.area, l.`language` 
+from countries c 
+join country_languages cl on c.country_id = cl.country_id 
+join languages l on cl.country_id = l.language_id 
+where l.`language` = 'hindi'
+order by c.area desc;
+
+-- 10.  Modificare la nazione di nome Italy, inserendo come national day il 2 giugno 1946
+
+update countries c
+set c.national_day = '1946-06-02'
+where c.name = 'Italy';
+
+select *
+from countries c 
+where c.name = 'Italy';
