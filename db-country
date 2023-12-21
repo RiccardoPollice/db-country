@@ -76,7 +76,7 @@ where c.name = 'Italy';
 
 select *
 from countries c 
-where c.national_day <= '1900-01-01'
+where c.national_day < '1900-01-01'
 order by c.national_day desc;
 
 -- 12. Contare quante lingue sono parlate in Italia
